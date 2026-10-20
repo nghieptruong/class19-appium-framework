@@ -1,42 +1,36 @@
 package pages;
 
-import org.openqa.selenium.By;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class LoginPage extends CommonPage {
 
     //Thuoc tinh (private)
-    private By byTxtUserLogin;
-    private By byTxtPasswordLogin;
-    private By byBtnLogin;
-    private By byLblLoginSuccess;
-    private WebDriver driver;
+    @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/nameET")
+    private WebElement txtUserLogin;
+
+    @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/passwordET")
+    private WebElement txtPasswordLogin;
+
+    @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/loginBtn")
+    private WebElement btnLogin;
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        this.byTxtUserLogin = By.id("taiKhoan");
-        this.byTxtPasswordLogin = By.id("matKhau");
-        this.byBtnLogin = By.xpath("//button[span[text()='Đăng nhập']]");
-        this.byLblLoginSuccess = By.id("swal2-title");
-        this.driver = driver;
     }
 
     //Phuong thuc (method)
     public void enterAccount(String account) {
-        sendKeys(byTxtUserLogin, account);
+        sendKeys(txtUserLogin, account);
     }
 
     public void enterPassword(String password) {
-        sendKeys(byTxtPasswordLogin, password);
+        sendKeys(txtPasswordLogin, password);
     }
 
     public void clickLogin() {
-        click(byBtnLogin);
-    }
-
-    public String getSuccessMessage() {
-        String actualLoginMsg = getText(byLblLoginSuccess);
-        return actualLoginMsg;
+        click(btnLogin);
     }
 
     //High level action (Business action)

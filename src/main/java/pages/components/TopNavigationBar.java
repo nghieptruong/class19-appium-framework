@@ -1,32 +1,36 @@
 package pages.components;
 
-import org.openqa.selenium.By;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
-
-import java.time.Duration;
 
 public class TopNavigationBar extends BasePage {
 
-    private By byLnkRegister;
-    private By byLnkLogin;
-    private WebDriver driver;
+    @AndroidFindBy(accessibility = "View menu")
+    private WebElement menu;
+
+    @AndroidFindBy(accessibility = "Login Menu Item")
+    private WebElement loginMenuItem;
+
+    @AndroidFindBy(accessibility = "Logout Menu Item")
+    private WebElement logoutMenuItem;
 
     public TopNavigationBar(WebDriver driver) {
         super(driver);
-        this.byLnkRegister = By.xpath("//a[h3[text()='Đăng Ký']]");
-        this.byLnkLogin = By.xpath("//a[h3[text()='Đăng Nhập']]");
-        this.driver = driver;
     }
 
-    public void navigateToLoginPage() {
-        click(byLnkLogin);
+    public void clickMenu() {
+        click(menu);
     }
 
-    public void navigateToRegisterPage() {
-        click(byLnkRegister);
+    public void goToLogin() {
+        clickMenu();
+        click(loginMenuItem);
+    }
+
+    public boolean isLogoutItemDisplayed() {
+        clickMenu();
+        return logoutMenuItem.isDisplayed();
     }
 }

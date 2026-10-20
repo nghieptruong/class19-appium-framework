@@ -31,10 +31,9 @@ public class BaseTest {
     public void beforeMethod(Method method) {
         logger.info("Before method executing...");
         ExtentReportManager.createTest(method.getName());
-        DriverManager driverManager = DriverManagerFactory.getDriverManager("chrome");
+        DriverManager driverManager = DriverManagerFactory.getDriverManager("android");
         driverManager.createDriver();
         driver = driverManager.getDriver();
-        driver.manage().window().maximize(); // maximize browser
     }
 
     @AfterMethod

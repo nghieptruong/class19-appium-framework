@@ -2,6 +2,7 @@ package drivers;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import utils.ConfigManager;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -11,11 +12,14 @@ public class AndroidDriverManager extends DriverManager {
 
     @Override
     public void createDriver() {
+        String udid = ConfigManager.getProperty("android.udid");
+        String androidVersion = ConfigManager.getProperty("android.platformVersion");
+
         UiAutomator2Options options = new UiAutomator2Options();
         options.setPlatformName("Android");
         options.setAutomationName("UiAutomator2");
-        options.setUdid("emulator-5554");
-        options.setPlatformVersion("15");
+        options.setUdid(udid);
+        options.setPlatformVersion(androidVersion);
         options.setNewCommandTimeout(Duration.ofSeconds(300));
         options.setAppPackage("com.saucelabs.mydemoapp.android");
         options.setAppActivity("com.saucelabs.mydemoapp.android.view.activities.SplashActivity");

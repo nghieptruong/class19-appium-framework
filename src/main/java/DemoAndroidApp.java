@@ -5,7 +5,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-public class DemoApp {
+public class DemoAndroidApp {
     public static void main(String[] args) throws MalformedURLException, InterruptedException {
         UiAutomator2Options options = new UiAutomator2Options();
         options.setPlatformName("Android");

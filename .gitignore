@@ -6,6 +6,7 @@ build/
 .kotlin
 
 test-output/
+logs/
 extentreport-output/
 
 ### IntelliJ IDEA ###

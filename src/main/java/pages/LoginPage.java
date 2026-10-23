@@ -1,18 +1,22 @@
 package pages;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends CommonPage {
 
     //Thuoc tinh (private)
+    @iOSXCUITFindBy(className = "XCUIElementTypeTextField")
     @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/nameET")
     private WebElement txtUserLogin;
 
+    @iOSXCUITFindBy(className = "XCUIElementTypeSecureTextField")
     @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/passwordET")
     private WebElement txtPasswordLogin;
 
+    @iOSXCUITFindBy(iOSNsPredicate = "name == \"Login\" AND label == \"Login\" AND type == \"XCUIElementTypeButton\"")
     @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/loginBtn")
     private WebElement btnLogin;
 
